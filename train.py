@@ -37,7 +37,7 @@ model = Net(1, 20, 1).to(device)
 #print(model)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 loss_func = torch.nn.MSELoss()
-epochs = 1000
+epochs = 100
 #if not os.path.exists('checkpoint.pt'):
 for t in range(1, epochs+1):
     prediction = model(x)
@@ -56,7 +56,7 @@ for t in range(1, epochs+1):
     plt.scatter(x.data.cpu(), y.data.cpu())
     plt.plot(x.data.cpu(), prediction.data.cpu(), 'r-', lw=5) 
     plt.text(0.5, 0, 'Loss={:.4f}'.format(loss.data), fontdict={'size': 20, 'color': 'red'})
-    if t % 10 == 0:
+    if t % 100 == 0:
         plt.savefig('./visual/train_epoch_{}.png'.format(t))
         print('Epoch {} done! Saving train_epoch_{}.png!'.format(t, t))
     plt.pause(0.01) 
